@@ -15,4 +15,19 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/cards/:userId', async (req, res) => {
+    try {
+        const client = await poolPromise;
+        const id = req.params.userId;
+        const data = await client.query("SELECT * FROM flashcards WHERE userId=$1", [id]);
+        const cards = data.rows;
+
+        res.setHeader("Content-Type", "application/json")
+        res.json(cards);
+    } catch(e) {
+        console.log(e)
+    }
+})
+
+
 module.exports = router;

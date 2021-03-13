@@ -5,8 +5,20 @@
 </head>
 
 <body>
-<h1>Flash Cards!</h1>
-<h3>Welcome <span><%- user.name %></span></h3>
+<div>
+    <h1>Flash Cards!</h1>
+    <h3>Welcome <span><%- user.name %></span></h3>
 
+    <div>
+        <button id="getCardsBtn">Get them cards!</button>
+    </div>
+</div>
+
+<script>
+    $("getCardsBtn").click(() => {
+        console.log("clicked cta")
+    })
+
+</script>
 </body>
 </html>

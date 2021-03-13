@@ -15,8 +15,11 @@
 </div>
 
 <script>
-    $("#getCardsBtn").click(function() {
-        console.log("clicked cta")
+    $("#getCardsBtn").click(() => {
+        const userId = <%- user.name %>
+        fetch(`/cards/${userId}`)
+          .then(response => response.json())
+          .then(data => console.log(data))
     })
 
 </script>

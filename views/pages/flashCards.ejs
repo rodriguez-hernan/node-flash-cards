@@ -15,9 +15,13 @@
 </div>
 
 <script>
+    const userId = "<%- user.name %>"
+    console.log(userId)
+
     $("#getCardsBtn").click(() => {
-        const userId = <%- user.name %>
-        fetch(`/cards/${userId}`)
+        const userId = "<%- user.name %>";
+
+        fetch(`https://enigmatic-brushlands-51613.herokuapp.com/flashCards/cards/${userId}`)
           .then(response => response.json())
           .then(data => console.log(data))
     })

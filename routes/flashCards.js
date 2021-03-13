@@ -5,7 +5,7 @@ const { poolPromise } = require('../db');
 router.get('/', async (req, res) => {
     try {
         const client = await poolPromise
-        const user = client.query("SELECT * FROM users WHERE id='1'");
+        const user = await client.query("SELECT * FROM users WHERE id='1'");
         res.setHeader("Content-Type", "application/json")
         res.json(user);
     } catch(e) {

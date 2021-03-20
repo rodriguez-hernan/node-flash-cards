@@ -15,18 +15,22 @@
 
     <div class="container nav-buttons d-flex justify-content-evenly">
         <button class="btn btn-primary" id="getCardsBtn">See all cards</button>
-        <button class="btn btn-primary" id="getCardsBtn">See random cards</button>
-        <button class="btn btn-primary" id="getCardsBtn">Add new card</button>
+        <button class="btn btn-primary" id="getRandomBtn">See random cards</button>
+        <button class="btn btn-primary" id="addCardBtn">Add new card</button>
     </div>
 
     <div id="cards-container" class="container" />
     <div id="random-card-container" class="container" />
+    <div id="add-card-form" class="container" />
+
 </div>
 
 <script>
     const userId = "<%- user.name %>"
     console.log(userId)
     let cards;
+
+
 
     $(document).ready(async function() {
         const userId = "<%- user.id %>";
@@ -35,12 +39,18 @@
         console.log( "ready!" );
     });
 
-    $("#getCardsBtn").click( async () => {
+    $("#getCardsBtn").click( () => {
+        hideSections();
         if (cards) buildCards(cards);
     })
 
+    $("#getRandomBtn").click(() => {
+        hideSections();
+        if (cards) randomCards(cards);
+    })
+
     function buildCards(cardsData) {
-        console.log("cardsData", cardsData)
+        $("#cards-container").show();
         if (cardsData) {
             cardsData.forEach((card) => {
                 console.log("card", card);
@@ -56,6 +66,25 @@
         }
     }
 
+    function randomCards(cards) {
+        const randomCard = cards[Math.floor(Math.random() * cards.length)];
+        console.log("random selection:", randomCard);
+        $("#random-card-container").empty().append(`
+            <div class='container random-card'>
+                <div class="card d-flex">
+                    <div class='side-a'>${randomCard.sidea}</div>
+                    <div class='side-b'>${randomCard.sideb}</div>
+                </div>
+                <button id="random-btn btn btn-primary" onclick="randomCards(cards)">Change</button>
+            </div>
+        `)
+    }
+
+    function hideSections() {
+        $("#cards-container").hide();
+        $("#random-card-container").hide();
+        $("#add-card-form").hide();
+    }
 </script>
 </body>
 </html>

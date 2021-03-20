@@ -12,19 +12,41 @@
     <div class="d-flex justify-content-center">
         <button class="btn btn-primary" id="getCardsBtn">Get them cards!</button>
     </div>
+
+    <div id="cards-container" class="container">
+        <div class="card row" style="max-width: 500px;">
+            <div class='side-a col-6'>abcdfg</div>
+            <div class='side-b col-6'>abcdfg</div>
+        </div>
+    </div>
 </div>
 
 <script>
     const userId = "<%- user.name %>"
     console.log(userId)
 
-    $("#getCardsBtn").click(() => {
+    $("#getCardsBtn").click( async () => {
         const userId = "<%- user.id %>";
 
-        fetch(`https://enigmatic-brushlands-51613.herokuapp.com/flashCards/cards/${userId}`)
-          .then(response => response.json())
-          .then(data => console.log(data))
+        const res = await fetch(`https://enigmatic-brushlands-51613.herokuapp.com/flashCards/cards/${userId}`);
+        const cards = await res.json();
+
+        buildCards(cards);
     })
+
+    function buildCards(cardsData) {
+        console.log("cardsData", cardsData)
+        if (cardsData) {
+            for (card in cardsData) {
+                $("#cards-container").append(`
+                    <div class="card row">
+                        <div class='side-a col-6'>${card.sidea}</div>
+                        <div class='side-b col-6'>${card.sideb}</div>
+                    </div>`
+                )
+            }
+        }
+    }
 
 </script>
 </body>

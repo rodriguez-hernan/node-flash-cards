@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&display=swap');
+
+body {
+    background-color: #F8FFE5;
+    font-family: 'Roboto Mono', monospace;
+}
+
 #cards-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -15,6 +22,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid;
+}
+
+.side-a {
+    background-color: #06D6A0;
+}
+
+.side-b {
+    background-color: #FFC43D;
 }
 
 .nav-buttons {

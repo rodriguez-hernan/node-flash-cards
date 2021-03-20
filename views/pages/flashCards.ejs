@@ -19,23 +19,24 @@
         <button class="btn btn-primary" id="getCardsBtn">Add new card</button>
     </div>
 
-    <div id="cards-container" class="container">
-    </div>
-
-
+    <div id="cards-container" class="container" />
+    <div id="random-card-container" class="container" />
 </div>
 
 <script>
     const userId = "<%- user.name %>"
     console.log(userId)
+    let cards;
+
+    $(document).ready(async function() {
+        const userId = "<%- user.id %>";
+        const res = await fetch(`https://enigmatic-brushlands-51613.herokuapp.com/flashCards/cards/${userId}`);
+        cards = await res.json();
+        console.log( "ready!" );
+    });
 
     $("#getCardsBtn").click( async () => {
-        const userId = "<%- user.id %>";
-
-        const res = await fetch(`https://enigmatic-brushlands-51613.herokuapp.com/flashCards/cards/${userId}`);
-        const cards = await res.json();
-
-        buildCards(cards);
+        if (cards) buildCards(cards);
     })
 
     function buildCards(cardsData) {

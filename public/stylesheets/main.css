@@ -3,13 +3,14 @@
 body {
     background-color: #F8FFE5;
     font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
 }
 
 #cards-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 10px;
-    row-gap: 15px;
+    column-gap: 20px;
+    row-gap: 35px;
 }
 
 #cards-container .card {
@@ -35,4 +36,8 @@ body {
 
 .nav-buttons {
     margin: 2rem 0;
+}
+
+.btn.btn-primary {
+    background-color: #1B9AAA;
 }

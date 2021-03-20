@@ -69,7 +69,7 @@
     function randomCards(cards) {
         const randomCard = cards[Math.floor(Math.random() * cards.length)];
         console.log("random selection:", randomCard);
-        $("#random-card-container").empty().append(`
+        $("#random-card-container").show().empty().append(`
             <div class='container random-card'>
                 <div class="card d-flex">
                     <div class='side-a'>${randomCard.sidea}</div>

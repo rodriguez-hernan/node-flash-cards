@@ -42,9 +42,11 @@ body {
     background-color: #1B9AAA;
 }
 
-#random-card-container {
-
+#random-card .card {
+    width: 500px;
 }
-#random-card {
 
+#random-btn {
+    margin-left: 20px;
+    padding: 15px;
 }

@@ -5,8 +5,13 @@
     row-gap: 15px;
 }
 
+#cards-container .card {
+    flex-direction: row;
+}
+
 .side-a, .side-b {
     height: 125px;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -37,7 +37,7 @@
     function buildCards(cardsData) {
         console.log("cardsData", cardsData)
         if (cardsData) {
-            for (const card in cardsData) {
+            cardsData.forEach((card) => {
                 console.log("card", card);
                 console.log("card", card.sidea);
 
@@ -47,7 +47,7 @@
                         <div class='side-b col-6'>${card.sideb}</div>
                     </div>`
                 )
-            }
+            })
         }
     }
 

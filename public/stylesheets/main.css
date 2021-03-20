@@ -1,0 +1,10 @@
+#cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 15px;
+}
+
+.side-a, .side-b {
+    height: 125px;
+}

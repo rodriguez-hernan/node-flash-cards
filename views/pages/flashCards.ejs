@@ -14,10 +14,10 @@
     </div>
 
     <div id="cards-container" class="container">
-        <div class="card row" style="max-width: 500px;">
+        <!--<div class="card row" style="max-width: 500px;">
             <div class='side-a col-6'>abcdfg</div>
             <div class='side-b col-6'>abcdfg</div>
-        </div>
+        </div>-->
     </div>
 </div>
 
@@ -37,7 +37,7 @@
     function buildCards(cardsData) {
         console.log("cardsData", cardsData)
         if (cardsData) {
-            for (card in cardsData) {
+            for (const card in cardsData) {
                 $("#cards-container").append(`
                     <div class="card row">
                         <div class='side-a col-6'>${card.sidea}</div>

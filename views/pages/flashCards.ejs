@@ -38,6 +38,9 @@
         console.log("cardsData", cardsData)
         if (cardsData) {
             for (const card in cardsData) {
+                console.log("card", card);
+                console.log("card", card.sidea);
+
                 $("#cards-container").append(`
                     <div class="card row">
                         <div class='side-a col-6'>${card.sidea}</div>

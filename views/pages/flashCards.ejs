@@ -19,9 +19,11 @@
         <button class="btn btn-primary" id="addCardBtn">Add new card</button>
     </div>
 
-    <div id="cards-container" class="container"></div>
-    <div id="random-card-container" class="container"></div>
-    <div id="add-card-form" class="container"></div>
+    <div id="main">
+        <div id="cards-container" class="container"></div>
+        <div id="random-card-container" class="container"></div>
+        <div id="add-card-form" class="container"></div>
+    </div>
 
 </div>
 
@@ -68,7 +70,7 @@
         const randomCard = cards[Math.floor(Math.random() * cards.length)];
         console.log("random selection:", randomCard);
         $("#random-card-container").show().empty().append(`
-            <div class='container random-card'>
+            <div class='container random-card d-flex justify-content-center'>
                 <div class="card d-flex">
                     <div class='side-a'>${randomCard.sidea}</div>
                     <div class='side-b'>${randomCard.sideb}</div>

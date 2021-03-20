@@ -13,7 +13,7 @@ body {
     row-gap: 35px;
 }
 
-#cards-container .card {
+#main .card {
     flex-direction: row;
 }
 

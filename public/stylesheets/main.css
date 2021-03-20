@@ -42,8 +42,8 @@ body {
     background-color: #1B9AAA;
 }
 
-#random-card .card {
-    width: 500px;
+.random-card .card {
+    min-width: 500px;
 }
 
 #random-btn {

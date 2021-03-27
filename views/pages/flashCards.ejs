@@ -34,13 +34,14 @@
     let cards;
 
     $(document).ready(async function() {
-        const userId = "<%- userId %>";
+        /*const userId = "<%- userId %>";
         const res = await fetch(`https://enigmatic-brushlands-51613.herokuapp.com/flashCards/cards/${userId}`);
-        cards = await res.json();
+        cards = await res.json();*/
         console.log( "ready!" );
     });
 
     $("#getCardsBtn").click( () => {
+        refreshCards();
         hideSections();
         if (cards) buildCards(cards);
     })
@@ -54,6 +55,12 @@
         hideSections();
         buildCardForm();
     })
+
+    async function refreshCards() {
+        const res = await fetch(`https://enigmatic-brushlands-51613.herokuapp.com/flashCards/cards/${userId}`);
+        cards = await res.json();
+        console.log( "ready!" );
+    }
 
     function buildCards(cardsData) {
         $("#cards-container").show().empty();
@@ -104,7 +111,7 @@
         `);
     }
 
-    function saveCard() {
+    async function saveCard() {
         const sidea = $("#side-a").val();
         const sideb = $("#side-b").val();
 
@@ -112,6 +119,18 @@
             console.log("side A", sidea)
             console.log("side B", sidea)
             $("#add-card-form").hide();
+            const data = { userId, sidea, sideb};
+            const insertCall = await fetch(`https://enigmatic-brushlands-51613.herokuapp.com/flashCards/saveCard`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            console.log('insertCall', insertCall);
+
+            await refreshCards();
+            hideSections();
         }
     }
 

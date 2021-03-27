@@ -5,10 +5,6 @@ var ssn;
 // I will add a login process later
 router.get('/', async (req, res) => {
     try {
-        // const client = await poolPromise
-        // const data = await client.query("SELECT * FROM users WHERE id='1'");
-        // res.setHeader("Content-Type", "application/json")
-        // const user = data.rows[0];
         ssn = req.session;
         console.log("session user", ssn.userName);
         console.log("session id", ssn.userId);
@@ -32,5 +28,25 @@ router.get('/cards/:userId', async (req, res) => {
     }
 })
 
+router.post('/saveCard', async (req, res) => {
+    try {
+        const client = await poolPromise;
+        const userId = req.body.userId;
+        const sidea = req.body.sidea;
+        const sideb = req.body.sideb;
+
+        const data = await client.query(`
+            INSERT INTO flashcards (sidea, sideb, topicid, userid)
+             VALUES ($1, $2, $3, $4)`, [sidea, sideb, '1', userId],
+            (err, result) => {
+                if (err) console.log('inserting error', err);
+                console.log('insert result', result);
+                res.json({success: true});
+            });
+
+    } catch (e) {
+        console.log(e)
+    }
+})
 
 module.exports = router;

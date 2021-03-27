@@ -3,7 +3,7 @@ var router = express.Router();
 const { poolPromise } = require('../db');
 var ssn;
 // I will add a login process later
-router.get('/', async (req, res) => {
+/*router.get('/', async (req, res) => {
     try {
         // const client = await poolPromise
         // const data = await client.query("SELECT * FROM users WHERE id='1'");
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     } catch(e) {
         console.log(e)
     }
-})
+})*/
 
 router.get('/cards/:userId', async (req, res) => {
     try {

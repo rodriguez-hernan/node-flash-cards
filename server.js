@@ -45,10 +45,13 @@ app.post('/login', (req, res)=> {
     client.query('SELECT id, name from users WHERE email = $1 and password = $2', [email, password],(err, result) => {
       done();
       if(result.rows[0]){
-        /*req.session.user = user;
-        req.session.userid = id;*/
-        console.log('results ', result.rows[0])
-        res.json({success: true});
+        console.log('results type', typeof result.rows[0])
+        const userName = result.rows[0].user;
+        const userId = result.rows[0].id;
+
+        req.session.userName = userName;
+        req.session.userId = userId;
+        res.redirect('/flashCards');
       }
       else{
         res.json({success: false});

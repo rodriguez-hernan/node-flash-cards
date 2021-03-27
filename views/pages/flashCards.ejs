@@ -51,6 +51,11 @@
         if (cards) randomCards(cards);
     })
 
+    $("#addCardBtn").click(() => {
+        hideSections();
+        buildCardForm();
+    })
+
     function buildCards(cardsData) {
         $("#cards-container").show().empty();
         cardsData.forEach((card) => {
@@ -82,6 +87,33 @@
 
     function changeRandomCard() {
         randomCards(cards)
+    }
+
+    function buildCardForm() {
+        $("#add-card-form").show().empty().append(`
+            <div>
+                <div class="mb-3">
+                    <label for="side-a" class="form-label">Side A</label>
+                    <textarea class="form-control" id="side-a" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="side-b" class="form-label">Side B</label>
+                    <textarea class="form-control" id="side-b" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" onclick="saveCard()">Submit</button>
+            </div>
+        `);
+    }
+
+    function saveCard() {
+        const sidea = $("#side-a").val();
+        const sideb = $("#side-b").val();
+
+        if (sidea || sideb) {
+            console.log("side A", sidea)
+            console.log("side B", sidea)
+            $("#add-card-form").hide();
+        }
     }
 
     function hideSections() {

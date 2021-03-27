@@ -7,8 +7,41 @@
 <body>
     <h1>Home page</h1>
 
-    <a href="/flashCards">Go to Flash Cards page</a>
+
+    <form>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password">
+        </div>
+        <button type="button" id="login" class="btn btn-primary">Sign in</button>
+    </form>
+
+    <!--<a href="/flashCards">Go to Flash Cards page</a>-->
 
     <%- include ("../partials/footer.ejs") %>
+    <script>
+        $("#login").click(async function() {
+            const email = $('#email').val();
+            const password = $('#password').val();
+
+            const data = { email: email, password: password };
+            const res = await fetch(`https://enigmatic-brushlands-51613.herokuapp.com/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await res.json();
+            console.log(result);
+        })
+
+    </script>
 </body>
 </html>

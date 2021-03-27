@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         ssn = req.session;
         console.log("session user", ssn.userName);
         console.log("session id", ssn.userId);
-        res.render('pages/flashCards');
+        res.render('pages/flashCards', { userName: ssn.userName, userId: ssn.userId });
     } catch(e) {
         console.log(e)
     }

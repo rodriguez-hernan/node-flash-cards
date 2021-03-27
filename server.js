@@ -31,8 +31,33 @@ const logRequest = (req, res, next)=>{
   next();
 }
 
+const login = (req, res, next) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  pool.connect((err, client, done) => {
+    if (err) throw err
+    client.query('SELECT id, name from users WHERE email = $1 and password = $2', [email, password], (err, result) => {
+      done();
+      if (result.rows[0]) {
+        const userName = result.rows[0].name;
+        const userId = result.rows[0].id;
+        console.log('results', userName, userId)
+
+        req.session.userName = userName;
+        req.session.userId = userId;
+        res.redirect("/flashCards");
+        next()
+      } else {
+        res.json({success: false});
+      }
+    })
+  })
+}
+
 // routes
 app.use(logRequest);
+app.use('/login', )
 app.use('/flashCards', flashCards);
 app.get('/', (req, res) => res.render('pages/index'));
 

@@ -46,7 +46,7 @@ const login = (req, res, next) => {
 
         req.session.userName = userName;
         req.session.userId = userId;
-        res.redirect("/flashCards");
+        res.redirect("pages/flashCards");
         next()
       } else {
         res.json({success: false});

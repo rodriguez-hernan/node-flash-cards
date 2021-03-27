@@ -38,9 +38,12 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),
+                redirect: 'follow'
+            }).catch( function(err) {
+                console.log(err)
             });
 
-            const result = await res.json();
+            // const result = await res.json();
             console.log(result);
         })
 

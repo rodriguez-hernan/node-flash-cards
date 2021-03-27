@@ -42,6 +42,9 @@
             }).catch( function(err) {
                 console.log(err)
             });
+            if (res.redirected) {
+                window.location.href = res.url;
+            }
         })
 
     </script>

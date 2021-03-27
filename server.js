@@ -60,7 +60,7 @@ app.use(logRequest);
 app.use('/login', login);
 app.use('/flashCards', flashCards);
 app.get('/', (req, res) => res.render('pages/index'));
-
+/*
 app.post('/login', (req, res)=> {
   const email = req.body.email;
   const password = req.body.password;
@@ -84,7 +84,7 @@ app.post('/login', (req, res)=> {
 
     });
   });
-});
+});*/
 
 app.post('/logout', (req, res)=>{
   if(req.session.user){

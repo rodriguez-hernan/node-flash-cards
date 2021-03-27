@@ -3,7 +3,7 @@ var router = express.Router();
 const { poolPromise } = require('../db');
 var ssn;
 // I will add a login process later
-/*router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         // const client = await poolPromise
         // const data = await client.query("SELECT * FROM users WHERE id='1'");
@@ -12,11 +12,11 @@ var ssn;
         ssn = req.session;
         console.log("session user", ssn.userName);
         console.log("session id", ssn.userId);
-        res.render('pages/flashCards', { userName: ssn.userName, userId: ssn.userId });
+        res.render('pages/flashCards');
     } catch(e) {
         console.log(e)
     }
-})*/
+})
 
 router.get('/cards/:userId', async (req, res) => {
     try {

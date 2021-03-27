@@ -1,15 +1,18 @@
 var express = require('express');
 var router = express.Router();
 const { poolPromise } = require('../db');
-
+var ssn;
 // I will add a login process later
 router.get('/', async (req, res) => {
     try {
-        const client = await poolPromise
-        const data = await client.query("SELECT * FROM users WHERE id='1'");
+        // const client = await poolPromise
+        // const data = await client.query("SELECT * FROM users WHERE id='1'");
         // res.setHeader("Content-Type", "application/json")
-        const user = data.rows[0];
-        res.render('pages/flashCards', { user } );
+        // const user = data.rows[0];
+        ssn = req.session;
+        console.log("session user", ssn.userName);
+        console.log("session id", ssn.userId);
+        res.render('pages/flashCards', { userName: ssn.userName, userId: ssn.userId });
     } catch(e) {
         console.log(e)
     }

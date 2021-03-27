@@ -51,7 +51,7 @@ app.post('/login', (req, res)=> {
 
         req.session.userName = userName;
         req.session.userId = userId;
-        res.redirect('/flashCards');
+        res.render("login",{Error:"block"});
       }
       else{
         res.json({success: false});

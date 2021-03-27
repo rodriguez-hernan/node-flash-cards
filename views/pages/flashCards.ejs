@@ -7,7 +7,7 @@
 <body>
 <div class="container">
     <h1>Flash Cards!</h1>
-    <h3>Welcome <span><%- user.name %></span></h3>
+    <h3>Welcome <span><%- userName %></span></h3>
 
     <div class="d-flex justify-content-center">
 
@@ -28,14 +28,14 @@
 </div>
 
 <script>
-    const userId = "<%- user.name %>"
+    const userId = "<%- userId %>"
     console.log(userId)
     let cards;
 
 
 
     $(document).ready(async function() {
-        const userId = "<%- user.id %>";
+        const userId = "<%- userId %>";
         const res = await fetch(`https://enigmatic-brushlands-51613.herokuapp.com/flashCards/cards/${userId}`);
         cards = await res.json();
         console.log( "ready!" );

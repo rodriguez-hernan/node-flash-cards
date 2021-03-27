@@ -45,9 +45,9 @@ app.post('/login', (req, res)=> {
     client.query('SELECT id, name from users WHERE email = $1 and password = $2', [email, password],(err, result) => {
       done();
       if(result.rows[0]){
-        console.log('results type', typeof result.rows[0])
         const userName = result.rows[0].user;
         const userId = result.rows[0].id;
+        console.log('results type', userName, userId)
 
         req.session.userName = userName;
         req.session.userId = userId;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <title>Flash Cards</title>
     <%- include ("../partials/header.ejs") %>
 </head>
 
@@ -31,8 +32,6 @@
     const userId = "<%- userId %>"
     console.log(userId)
     let cards;
-
-
 
     $(document).ready(async function() {
         const userId = "<%- userId %>";

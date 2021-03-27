@@ -57,7 +57,7 @@ const login = (req, res, next) => {
 
 // routes
 app.use(logRequest);
-app.use('/login', )
+app.use('/login', login);
 app.use('/flashCards', flashCards);
 app.get('/', (req, res) => res.render('pages/index'));
 

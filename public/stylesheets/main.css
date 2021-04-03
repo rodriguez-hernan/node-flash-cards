@@ -52,3 +52,13 @@ body {
     margin-left: 20px;
     padding: 15px;
 }
+
+.delete-card svg {
+    color: white;
+    background-color: red;
+    height: 30px;
+    width: 30px;
+    padding: 6px;
+    border-radius: 50%;
+    margin: 5px;
+}

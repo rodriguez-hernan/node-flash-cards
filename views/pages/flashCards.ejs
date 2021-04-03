@@ -106,14 +106,21 @@
     }
 
     function showDeleteModal(cardId) {
-        console.log('delete card', cardId);
         $("#deleteModal").modal("show");
         $("#cardToDelete").val(cardId);
     }
 
-    function deleteCard() {
+    async function deleteCard() {
         const id = $("#cardToDelete").val();
         console.log("deleting card id ", id);
+        const res = await fetch(`https://enigmatic-brushlands-51613.herokuapp.com/flashCards/deleteCard/${id}`, {
+            method: 'DELETE',
+        });
+        let deleteResult = await res.json();
+        console.log('deleteResult', deleteResult);
+
+        $("#deleteModal").modal("hide");
+        hideSections();
     }
 
     function randomCards(cards) {

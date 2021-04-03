@@ -49,4 +49,21 @@ router.post('/saveCard', async (req, res) => {
     }
 })
 
+router.delete('/deleteCard/:id', async (req, res) => {
+    try {
+        const client = await poolPromise;
+        const { id } = req.params;
+        const data = await client.query(`
+            DELETE FROM flashcards WHERE id=$1`, [id],
+            (err, result) => {
+                if (err) console.log('delete error', err);
+                console.log('delete result', result);
+                res.json({success: true});
+            });
+
+    } catch (e) {
+        console.log(e)
+    }
+})
+
 module.exports = router;

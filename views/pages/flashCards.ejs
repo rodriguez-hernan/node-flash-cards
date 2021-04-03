@@ -69,12 +69,19 @@
             console.log("card", card.sidea);
 
             $("#cards-container").append(`
-                <div class="card d-flex">
-                    <div class='side-a'>${card.sidea}</div>
-                    <div class='side-b'>${card.sideb}</div>
+                <div class="card-block">
+                    <div class="card d-flex">
+                        <div class='side-a'>${card.sidea}</div>
+                        <div class='side-b'>${card.sideb}</div>
+                    </div>
+                    <div class="delete-card" onclick="showDeleteModal(card})"><i class="bi bi-trash-fill"></i></div>
                 </div>`
             )
         })
+    }
+
+    function showDeleteModal(card) {
+        console.log('delete card', card);
     }
 
     function randomCards(cards) {

@@ -53,6 +53,10 @@ body {
     padding: 15px;
 }
 
+.delete-card {
+    text-align: center;
+}
+
 .delete-card svg {
     color: white;
     background-color: red;

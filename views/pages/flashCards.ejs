@@ -52,15 +52,12 @@
     console.log(userId)
     let cards;
 
-    $(document).ready(async function() {
-        /*const userId = "<%- userId %>";
-        const res = await fetch(`https://enigmatic-brushlands-51613.herokuapp.com/flashCards/cards/${userId}`);
-        cards = await res.json();*/
+    $(document).ready(function() {
         console.log( "ready!" );
     });
 
-    $("#getCardsBtn").click( () => {
-        refreshCards();
+    $("#getCardsBtn").click( async () => {
+        await refreshCards();
         hideSections();
         if (cards) buildCards(cards);
     })
@@ -118,8 +115,8 @@
         });
         let deleteResult = await res.json();
         console.log('deleteResult', deleteResult);
-
         $("#deleteModal").modal("hide");
+        await refreshCards();
         hideSections();
     }
 
